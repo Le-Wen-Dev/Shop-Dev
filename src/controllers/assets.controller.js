@@ -1,16 +1,14 @@
 'use strict'
 
 const AssetsService = require("../services/assets.service");
-const { OK, CREATED } = require('../core/success.response')
-// class AssetsController {
-//     signUp = async (req, res, next) => {
-//         const { name, email, password } = req.body; // Trích xuất các trường name, email, password từ req.body
-//         console.log(`[P]:::signUp`, { name, email, password }); // Đảm bảo rằng dữ liệu được trích xuất đúng
-//         return res.status(200).json(await AssetsService.signUp(name, email, password)); // Truyền các trường đã trích xuất vào hàm signUp
+const { OK, CREATED, SuccessResponse } = require('../core/success.response')
 
-//     }
-// }
 class AssetsController {
+    login = async (req, res, next) => {
+        new SuccessResponse({
+            metadata: await AssetsService.login(req.body)
+        }).send(res)
+    }
     signUp = async (req, res, next) => {
         const { name, email, password } = req.body; // Extract fields from req.body
         console.log(`[P]:::signUp`, { name, email, password }); // Ensure data is extracted correctly

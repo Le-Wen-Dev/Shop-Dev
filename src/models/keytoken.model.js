@@ -20,10 +20,10 @@ var keyTokenSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    refreshToken: {
-        type: Array, default: []
-    }
+    refreshTokensUsed: {
+        type: Array, default: [] // nhung refresh token da duoc su dung
 
+    }, refreshToken: { type: String, require: true }
 }, {
     collection: COLLECTION_NAME,
     timestamps: true
